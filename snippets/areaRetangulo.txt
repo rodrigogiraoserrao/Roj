@@ -1,0 +1,13 @@
+out "Insira o comprimento do retangulo";
+
+readfloat comp;
+
+out "Insira a largura do retangulo";
+
+readfloat larg;
+
+area = comp * larg;
+
+out "A area do retangulo e ";
+
+out area;

@@ -1,0 +1,32 @@
+Roj's grammar specification
+
+program : suite EOF
+suite : stmt (';' stmt) ';'?
+
+comp_op : '==' | '!=' | '>' | '<' | '>=' | '<='
+
+stmt : expression | assignment | compound | io_stmt | control
+
+control : 'jumpover' | 'stop' | ('return' | 'halt') expression?
+
+assignment : USER_VAR '=' (assignment | expression)
+
+compound : while_stmt | if_stmt
+while_stmt : 'while' expression 'do' suite 'end'
+if_stmt : 'if' expression 'do' suite 'end' ('else' 'do' suite 'end')?
+
+io_stmt : in_stmt | out_stmt
+in_stmt : ('read' | 'readint' | 'readfloat' | 'readbool') USER_VAR
+out_stmt : 'out' expression
+
+expression : or_test
+or_test : and_test ('or' and_test)*
+and_test : not_test ('not' not_test)*
+not_test : 'not' not_test | comparison
+
+comparison : arith_expr (comp_op arith_expr)*
+
+arith_expr : term (('+' | '-') term)*
+term : factor (('*' | '/') factor)*
+factor : atom ('^' atom)*
+atom : ('+' | '-') atom  | NUM | USER_VAR | BOOL | '(' expression ')' | STRING

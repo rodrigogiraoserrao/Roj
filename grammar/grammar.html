@@ -1,0 +1,45 @@
+<html>
+<head>
+
+<style>
+    p, br {
+        line-height: 30%;
+    }
+</style>
+
+</head>
+<body>
+<h1>Roj's grammar specification</h1>
+<br />
+<p><span style="color:#009900">program </span>: suite EOF</p>
+<p><span style="color:#009900">suite </span>: stmt (<span style="color:#0033cc">';'</span> stmt) <span style="color:#0033cc">';'</span>?</p>
+<br />
+<p><span style="color:#009900">comp_op </span>: <span style="color:#0033cc">'=='</span> | <span style="color:#0033cc">'!='</span> | <span style="color:#0033cc">'>'</span> | <span style="color:#0033cc">'<'</span> | <span style="color:#0033cc">'>='</span> | <span style="color:#0033cc">'<='</span></p>
+<br />
+<p><span style="color:#009900">stmt </span>: expression | assignment | compound | io_stmt | control</p>
+<br />
+<p><span style="color:#009900">control </span>: <span style="color:#0033cc">'jumpover'</span> | <span style="color:#0033cc">'stop'</span> | (<span style="color:#0033cc">'return'</span> | <span style="color:#0033cc">'halt'</span>) expression?</p>
+<br />
+<p><span style="color:#009900">assignment </span>: USER_VAR <span style="color:#0033cc">'='</span> (assignment | expression)</p>
+<br />
+<p><span style="color:#009900">compound </span>: while_stmt | if_stmt</p>
+<p><span style="color:#009900">while_stmt </span>: <span style="color:#0033cc">'while'</span> expression <span style="color:#0033cc">'do'</span> suite <span style="color:#0033cc">'end'</span></p>
+<p><span style="color:#009900">if_stmt </span>: <span style="color:#0033cc">'if'</span> expression <span style="color:#0033cc">'do'</span> suite <span style="color:#0033cc">'end'</span> (<span style="color:#0033cc">'else'</span> <span style="color:#0033cc">'do'</span> suite <span style="color:#0033cc">'end'</span>)?</p>
+<br />
+<p><span style="color:#009900">io_stmt </span>: in_stmt | out_stmt</p>
+<p><span style="color:#009900">in_stmt </span>: (<span style="color:#0033cc">'read'</span> | <span style="color:#0033cc">'readint'</span> | <span style="color:#0033cc">'readfloat'</span> | <span style="color:#0033cc">'readbool'</span>) USER_VAR</p>
+<p><span style="color:#009900">out_stmt </span>: <span style="color:#0033cc">'out'</span> expression</p>
+<br />
+<p><span style="color:#009900">expression </span>: or_test</p>
+<p><span style="color:#009900">or_test </span>: and_test (<span style="color:#0033cc">'or'</span> and_test)*</p>
+<p><span style="color:#009900">and_test </span>: not_test (<span style="color:#0033cc">'not'</span> not_test)*</p>
+<p><span style="color:#009900">not_test </span>: <span style="color:#0033cc">'not'</span> not_test | comparison</p>
+<br />
+<p><span style="color:#009900">comparison </span>: arith_expr (comp_op arith_expr)*</p>
+<br />
+<p><span style="color:#009900">arith_expr </span>: term ((<span style="color:#0033cc">'+'</span> | <span style="color:#0033cc">'-'</span>) term)*</p>
+<p><span style="color:#009900">term </span>: factor ((<span style="color:#0033cc">'*'</span> | <span style="color:#0033cc">'/'</span>) factor)*</p>
+<p><span style="color:#009900">factor </span>: atom (<span style="color:#0033cc">'^'</span> atom)*</p>
+<p><span style="color:#009900">atom </span>: (<span style="color:#0033cc">'+'</span> | <span style="color:#0033cc">'-'</span>) atom  | NUM | USER_VAR | BOOL | <span style="color:#0033cc">'('</span> expression <span style="color:#0033cc">')'</span> | STRING</p>
+</body>
+</html>

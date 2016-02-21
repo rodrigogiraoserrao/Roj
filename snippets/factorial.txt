@@ -1,0 +1,8 @@
+$ Calculates the factorial of a given number $
+result = 1;
+readint n; $ Ask for user input $
+while n > 0 do
+    result = result * n;
+    n = n - 1;
+end;
+out result;
