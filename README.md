@@ -5,7 +5,8 @@ Based on the series "Let's build a simple interpreter" (https://ruslanspivak.com
 for a toy language I called "Roj".
 
 This directory has the following layout:
-  - Grammar
+
+  >- Grammar
     - grammar.txt
     - grammar.html
     - htmlGrammar.py
