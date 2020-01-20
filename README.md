@@ -1,5 +1,9 @@
 # Roj
-Toy programming language
+## Toy programming language
+
+[![Run on Repl.it](https://repl.it/badge/github/RojerGS/Roj)](https://repl.it/github/RojerGS/Roj)
+
+As seen on [this](https://mathspp.com/blog/creating-programming-language-from-scratch) blog post.
 
 Based on the series "Let's build a simple interpreter" (https://ruslanspivak.com/lsbasi-part1/) I wrote an interpreter
 for a toy language I called "Roj".
