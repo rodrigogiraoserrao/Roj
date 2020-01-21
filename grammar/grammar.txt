@@ -1,7 +1,7 @@
 Roj's grammar specification
 
 program : suite EOF
-suite : stmt (';' stmt) ';'?
+suite : stmt (';' stmt)* ';'?
 
 comp_op : '==' | '!=' | '>' | '<' | '>=' | '<='
 
